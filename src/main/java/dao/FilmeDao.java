@@ -10,4 +10,6 @@ public interface FilmeDao {
 	public void excluir(Filme x);
 	public Filme buscar(int cod);
 	public List<Filme> buscarTodos();
+	
+	public List<Filme> buscarPorNomeAno(String nome, int anoMin, int anoMax);
 }

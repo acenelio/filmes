@@ -39,8 +39,19 @@ public class FilmeDaoImpl implements FilmeDao {
 	@Override
 	public List<Filme> buscarTodos() {
 		String jpql = "SELECT x FROM Filme x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Filme> buscarPorNomeAno(String nome, int anoMin, int anoMax) {
+		String jpql = "SELECT x FROM Filme x WHERE x.titulo LIKE :p1 AND x.ano >= :p2 AND x.ano <= :p3";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+nome+"%");
+		query.setParameter("p2", anoMin);
+		query.setParameter("p3", anoMax);
+		return query.getResultList();
+	}
+	
 }
