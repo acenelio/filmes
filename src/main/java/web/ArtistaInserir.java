@@ -20,7 +20,7 @@ public class ArtistaInserir extends HttpServlet {
 	private static String DESTINO = "/artista/listar.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ArtistaServico as = new ArtistaServico();
 		Artista x = Instanciar.artista(request);
