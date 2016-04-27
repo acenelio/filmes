@@ -25,42 +25,54 @@
 			<h1>Inserir novo Artista</h1>
 		</div>
 
-		<form method="post" name="myform" class="form-horizontal" 
+		<form method="post" name="myform" class="form-horizontal"
 			action="<%=request.getContextPath()%>/artista/inserir">
 
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="nome">Nome:</label>	
+				<div class="col-sm-offset-2 col-sm-10">
+					<ul>
+						<c:forEach items="${erros}" var="msg">
+							<li class="erro">${msg}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="nome">Nome:</label>
 				<div class="col-sm-5">
-					<input type="text" name="nome" id="nome" value="${item.nome}" 
-					required="required" class="form-control"/>	
+					<input type="text" name="nome" id="nome" value="${item.nome}"
+						required="required" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="nacionalidade">Nacionalidade:</label>	
+				<label class="col-sm-2 control-label" for="nacionalidade">Nacionalidade:</label>
 				<div class="col-sm-5">
-					<input type="text" name="nacionalidade" id="nacionalidade" value="${item.nacionalidade}" 
-					required="required" class="form-control"/>	
+					<input type="text" name="nacionalidade" id="nacionalidade"
+						value="${item.nacionalidade}" required="required"
+						class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="cache">Cache:</label>	
+				<label class="col-sm-2 control-label" for="cache">Cache:</label>
 				<div class="col-sm-5">
-					<input type="text" name="cache" id="cache" value="${item.cache}" 
-					required="required" class="form-control"/>	
+					<input type="text" name="cache" id="cache" value="${item.cache}"
+						required="required" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="nascimento">Nascimento:</label>	
+				<label class="col-sm-2 control-label" for="nascimento">Nascimento:</label>
 				<div class="col-sm-5">
-					<input type="text" name="nascimento" id="nascimento" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.nascimento}"/>"  
-					required="required" class="form-control"/>	
+					<input type="text" name="nascimento" id="nascimento"
+						value="<fmt:formatDate pattern="dd/MM/yyyy" value="${item.nascimento}"/>"
+						required="required" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">	
+				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary">Inserir</button>
-					<a href="<%=request.getContextPath()%>/artista/listar" 
-					class="btn btn-default">Voltar</a>
+					<a href="<%=request.getContextPath()%>/artista/listar"
+						class="btn btn-default">Voltar</a>
 				</div>
 			</div>
 		</form>

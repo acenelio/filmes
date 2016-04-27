@@ -37,3 +37,11 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+/* Outros estilos
+-------------------------------------------------- */
+
+.erro {
+	color: #FF0000;
+	font-weight: bold;
+}

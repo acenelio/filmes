@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.ArtistaDao;
@@ -14,6 +15,28 @@ public class ArtistaServico {
 	public ArtistaServico() {
 		dao = DaoFactory.criarArtistaDao();
 	}
+	
+	public void validar(Artista x) throws ValidacaoException {
+		List<String> erros = new ArrayList<>();
+		
+		if (x.getNome()==null) {
+			erros.add("Favor preencher o campo nome");
+		}
+		if (x.getNacionalidade()==null) {
+			erros.add("Favor preencher o campo nacionalidade");
+		}
+		if (x.getCache()==null) {
+			erros.add("Favor preencher um valor válido para o cache");
+		}
+		if (x.getNascimento()==null) {
+			erros.add("Favor preencher um valor válido para a data de nascimento");
+		}
+		
+		if (!erros.isEmpty()) {
+			throw new ValidacaoException("Erro de validação", erros);
+		}
+	}
+	
 	
 	public void inserir(Artista x) throws ServicoException {
 		try {
