@@ -46,7 +46,7 @@ public class FilmeDaoImpl implements FilmeDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Filme> buscarPorNomeAno(String nome, int anoMin, int anoMax) {
-		String jpql = "SELECT x FROM Filme x WHERE x.titulo LIKE :p1 AND x.ano >= :p2 AND x.ano <= :p3";
+		String jpql = "SELECT x FROM Filme x WHERE x.titulo LIKE :p1 AND x.ano >= :p2 AND x.ano <= :p3 ORDER BY x.titulo";
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", "%"+nome+"%");
 		query.setParameter("p2", anoMin);
