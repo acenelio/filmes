@@ -50,25 +50,25 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for="desconto">Desconto no cache:</label>
-				<div class="col-sm-5">
-					<input type="text" name="desconto" id="desconto" value="${item.desconto}"
-						required="required" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group">
 				<label class="col-sm-2 control-label" for="artista">Selecione
 					o artista:</label>
 				<div class="col-sm-5">
-
 					<select name="codArtista" class="form-control">
+						<option value="">-- Selecione o artista--</option>
 						<c:forEach items="${artistas}" var="x">
-							<option value="${x.codArtista}" 
-								selected=${x == artistaSelecionado ? 'selected' : ''}>
-								${x.nome}, <fmt:setLocale value="pt_BR"/><fmt:formatNumber type="currency" value="${x.cache}" /></option>
+							<option value="${x.codArtista}" <c:if test="${x == artistaSelecionado}">selected="selected"</c:if>>
+								${x.nome}, <fmt:setLocale value="pt_BR" /><fmt:formatNumber type="currency" value="${x.cache}" />    
+							</option>
 						</c:forEach>
-						<option value="" selected=>-- Selecione o artista--</option>
 					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="desconto">Desconto
+					no cache:</label>
+				<div class="col-sm-5">
+					<input type="text" name="desconto" id="desconto"
+						value="${item.desconto}" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
