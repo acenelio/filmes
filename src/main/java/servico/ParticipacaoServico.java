@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoFactory;
@@ -13,6 +14,27 @@ public class ParticipacaoServico {
 	
 	public ParticipacaoServico() {
 		dao = DaoFactory.criarParticipacaoDao();
+	}
+
+	public void validar(Participacao x) throws ValidacaoException {
+		List<String> erros = new ArrayList<>();
+		
+		if (x.getPersonagem()==null) {
+			erros.add("Favor preencher o campo personagem");
+		}
+		if (x.getArtista()==null) {
+			erros.add("Favor informar um artista");
+		}
+		if (x.getFilme()==null) {
+			erros.add("Favor informar um filme");
+		}
+		if (x.getDesconto()==null) {
+			erros.add("Favor preencher um valor válido para o desconto");
+		}
+		
+		if (!erros.isEmpty()) {
+			throw new ValidacaoException("Erro de validação", erros);
+		}
 	}
 
 	public void inserir(Participacao x) throws ServicoException {
