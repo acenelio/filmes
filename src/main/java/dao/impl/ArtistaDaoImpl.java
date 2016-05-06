@@ -39,7 +39,7 @@ public class ArtistaDaoImpl implements ArtistaDao {
 	@Override
 	public List<Artista> buscarTodos() {
 		String jpql = "SELECT x FROM Artista x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 
